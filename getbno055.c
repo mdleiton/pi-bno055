@@ -73,7 +73,7 @@ Command line parameters have the following format:\n\
            lin = Linear Accel (X-Y-Z axis values)\n\
            inf = Sensor info (23 version and state values)\n\
            cal = Calibration data (mag, gyro and accel calibration values)\n\
-           continuous = continuous data-eul)\n\
+           cnt = continuous data-eul)\n\
    -l   load sensor calibration data from file, Example -l ./bno055.cal\n\
    -w   write sensor calibration data to file, Example -w ./bno055.cal\n\
    -o   output sensor data to HTML table file, requires -t, Example: -o ./bno055.html\n\
@@ -705,14 +705,14 @@ int main(int argc, char *argv[]) {
    } /* End reading Euler Orientation */
 
   /* ----------------------------------------------------------- *
-    *  "-t continuous"                                            *
+    *  "-t cnt"                                            *
     * This requires the sensor to be in fusion mode (mode > 7).   *
     * ----------------------------------------------------------- */
-   if(strcmp(datatype, "continuous") == 0) {
+   if(strcmp(datatype, "cnt") == 0) {
 
       int mode = get_mode();
       if(mode < 8) {
-         printf("Error getting Euler data, sensor mode %d is not a fusion mode.\n", mode);
+         printf("Error getting data, sensor mode %d is not a fusion mode.\n", mode);
          exit(-1);
       }
 
